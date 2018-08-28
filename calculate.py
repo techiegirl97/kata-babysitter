@@ -7,12 +7,22 @@ def calculate(start,stop,bed):
 	#bedtime may be fluid, round to the next hour
 	
 	#write the functions for special times
+
+	#calculate the hours from start to bed
+	#5 to 8 is 3 hours at ($12/hr) = $36
+	
+	#calculate the hours from bed to midnight
+	#8 to mid is 4 hours at ($8/hr) = $32
+	
+	#calculate the hours from midnight to stop time
+	#mid to 4 is 4 hours at ($16/hr) = $64
 	
 	#add up the earnings
+	#36+32+64 = $132
 
 	
 #write the tests
-#order of variables (start time, stop time, bedtime)
-test.expect(calculate(5,4,8) == 0)
-test.expect(calculate(5,4,7) == 0)
+#order of variables (start time, stop time, bedtime), result is $earnings
+test.expect(calculate(5,4,8) == 132)
+test.expect(calculate(5,4,7) == 128)
 
