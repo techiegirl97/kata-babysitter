@@ -8,3 +8,7 @@ test.expect(calculate(5,4,8) == 132)
 test.expect(calculate(5,4,7) == 128)
 test.expect(calculate(5,8,7) == 32)
 test.expect(calculate(5,7,7) == 24)
+test.expect(calculate(6,7,7) == 12)
+test.expect(calculate(6.45,11.75,6.75) == 52)
+test.expect(calculate("6:25","11:45","6:45") == 52)
+
