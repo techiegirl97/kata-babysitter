@@ -1,31 +1,47 @@
 def calculate(start,stop,bed):
     #import the needed libraries
     import math
+    import re
     
     #This is an array representing a full/maximum work night.
     #strategy: calculate position minus position to get hours
     timescale = [5,6,7,8,9,10,11,12,1,2,3,4]
     
-    #round the start\stop time to the nearest hour
-    #bedtime may be fluid, round to the next hour
-    
+    #check the variable and handle int, float or strings types    
     if type(start) is int:
         sta = timescale.index(start)
     elif type(start) is float:
         sta = timescale.index(round(start))
         print("startime index:",sta)
+    elif type(start) is str:
+        #filter out special char and letters
+        filterStart = re.search('[0-9]+', start).group()
+        print(type(filterStart))
+        
+        numStart = int(filterStart)
+        print(type(numStart))
+        
+        sta = timescale.index(numStart)
     
     if type(stop) is int:
         sto = timescale.index(stop)
     elif type(stop) is float:
         sto = timescale.index(round(stop))
         print("stoptime index:",sto)
+    elif type(stop) is str:
+        filterStop = re.search('[0-9]+', stop).group()
+        numStop = int(filterStop)
+        sto = timescale.index(numStop)
     
     if type(bed) is int:
         bed = timescale.index(bed)
     elif type(bed) is float:
         bed = timescale.index(round(bed))
         print("bedtime index:",bed)
+    elif type(bed) is str:
+        filterBed = re.search('[0-9]+', bed).group()
+        numBed = int(filterBed)
+        bed = timescale.index(numBed)
     
 	#the first time block
 	#calculate the hours from start to bed
@@ -35,6 +51,7 @@ def calculate(start,stop,bed):
     
 	#the second time block
 	#calculate the hours from bed to midnight or end of hours worked
+    #index 7 is midnight on the timescale
     if sto >=7:
         time2 = 7 - bed
         earn2 = time2 * 8
@@ -45,7 +62,8 @@ def calculate(start,stop,bed):
     
 	#the third time block
 	#calculate the hours from midnight to stop time
-    #if stop time before midnight then break or return 0    
+    #if stop time before midnight then break or return 0
+    #index 7 is midnight on the timescale
     if sto >7:
         time3 = sto - 7
         earn3 = time3 * 16
@@ -56,6 +74,8 @@ def calculate(start,stop,bed):
 	#add up the earnings and return the result
     totalHours = sto - sta
     print("total hours:",totalHours)
+    
     totalEarnings = earn1 + earn2 + earn3
     print("total earnings:",totalEarnings)
+    
     return totalEarnings
