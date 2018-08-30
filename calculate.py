@@ -9,9 +9,23 @@ def calculate(start,stop,bed):
     #round the start\stop time to the nearest hour
     #bedtime may be fluid, round to the next hour
     
-    sta = timescale.index(start)
-    sto = timescale.index(stop)
-    bed = timescale.index(bed)
+    if type(start) is int:
+        sta = timescale.index(start)
+    elif type(start) is float:
+        sta = timescale.index(round(start))
+        print("startime index:",sta)
+    
+    if type(stop) is int:
+        sto = timescale.index(stop)
+    elif type(stop) is float:
+        sto = timescale.index(round(stop))
+        print("stoptime index:",sto)
+    
+    if type(bed) is int:
+        bed = timescale.index(bed)
+    elif type(bed) is float:
+        bed = timescale.index(round(bed))
+        print("bedtime index:",bed)
     
 	#the first time block
 	#calculate the hours from start to bed
