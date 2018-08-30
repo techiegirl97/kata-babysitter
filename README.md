@@ -16,3 +16,11 @@ The babysitter:
 *As a babysitter<br>
 In order to get paid for 1 night of work<br>
 I want to calculate my nightly charge<br>*
+
+## Usage
+The program expects 3 parameters"
+First, enter the Start Time of work.
+Second, enter the work Stop Time/end of night.
+Last, enter the Bedtime. 
+
+The algorithm will calculate pay for one night of work.
