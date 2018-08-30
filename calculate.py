@@ -5,7 +5,7 @@ def calculate(start,stop,bed):
 	
 	#This is an array representing a full/maximum work night.
 	#strategy: calculate position minus position to get hours
-	timescale = {5,6,7,8,9,10,11,12,1,2,3,4}
+	timescale = [5,6,7,8,9,10,11,12,1,2,3,4]
 	
 	#round the start\stop time to the nearest hour
 	#bedtime may be fluid, round to the next hour
