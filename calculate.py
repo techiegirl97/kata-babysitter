@@ -1,3 +1,10 @@
+def inputs():
+	start = input('Enter start time:')
+	stop = input('Enter end time:')
+	bed = input('Enter bed time:')
+	
+	calculate(start,stop,bed)
+
 def calculate(start,stop,bed):
     #import the needed libraries
     import math
@@ -12,22 +19,16 @@ def calculate(start,stop,bed):
         sta = timescale.index(start)
     elif type(start) is float:
         sta = timescale.index(round(start))
-        print("startime index:",sta)
     elif type(start) is str:
         #filter out special char and letters
         filterStart = re.search('[0-9]+', start).group()
-        print(type(filterStart))
-        
-        numStart = int(filterStart)
-        print(type(numStart))
-        
+        numStart = int(filterStart)        
         sta = timescale.index(numStart)
     
     if type(stop) is int:
         sto = timescale.index(stop)
     elif type(stop) is float:
         sto = timescale.index(round(stop))
-        print("stoptime index:",sto)
     elif type(stop) is str:
         filterStop = re.search('[0-9]+', stop).group()
         numStop = int(filterStop)
@@ -37,7 +38,6 @@ def calculate(start,stop,bed):
         bed = timescale.index(bed)
     elif type(bed) is float:
         bed = timescale.index(round(bed))
-        print("bedtime index:",bed)
     elif type(bed) is str:
         filterBed = re.search('[0-9]+', bed).group()
         numBed = int(filterBed)
@@ -62,7 +62,7 @@ def calculate(start,stop,bed):
     
 	#the third time block
 	#calculate the hours from midnight to stop time
-    #if stop time before midnight then break or return 0
+    #if stop time before midnight then return 0
     #index 7 is midnight on the timescale
     if sto >7:
         time3 = sto - 7
@@ -79,3 +79,5 @@ def calculate(start,stop,bed):
     print("total earnings:",totalEarnings)
     
     return totalEarnings
+	
+inputs()

@@ -4,6 +4,8 @@
 #8 to mid is 4 hours at ($8/hr) = $32
 #mid to 4 is 4 hours at ($16/hr) = $64
 
+import https://github.com/ChristianECooper/CodeWars-Python-TestFramework/blob/master/Test.py
+
 test.expect(calculate(5,4,8) == 132)
 test.expect(calculate(5,4,7) == 128)
 test.expect(calculate(5,8,7) == 32)
