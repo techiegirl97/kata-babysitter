@@ -1,56 +1,36 @@
-def inputs():
-	start = input('Enter start time:')
-	stop = input('Enter end time:')
-	bed = input('Enter bed time:')
-	
-	calculate(start,stop,bed)
+import re
+import math
 
-def calculate(start,stop,bed):
-    #import the needed libraries
-    import math
-    import re
+def inputs():
+    #begin by displaying a help message with instructions
+    help_msg()
     
+    #prompt user for times and validate the input
+    start = validateStart()    
+    stop = validateStop()
+    bed = validateBed()
+
+    #run the calculations
+    calculate(start,stop,bed)
+
+def calculate(start,stop,bed):    
     #This is an array representing a full/maximum work night.
     #strategy: calculate position minus position to get hours
     timescale = [5,6,7,8,9,10,11,12,1,2,3,4]
     
-    #check the variable and handle int, float or strings types    
-    if type(start) is int:
-        sta = timescale.index(start)
-    elif type(start) is float:
-        sta = timescale.index(round(start))
-    elif type(start) is str:
-        #filter out special char and letters
-        filterStart = re.search('[0-9]+', start).group()
-        numStart = int(filterStart)        
-        sta = timescale.index(numStart)
+    #create the calculator variables based on the Index strategy          
+    sta = timescale.index(start)
+    sto = timescale.index(stop)
+    bed = timescale.index(bed)
     
-    if type(stop) is int:
-        sto = timescale.index(stop)
-    elif type(stop) is float:
-        sto = timescale.index(round(stop))
-    elif type(stop) is str:
-        filterStop = re.search('[0-9]+', stop).group()
-        numStop = int(filterStop)
-        sto = timescale.index(numStop)
-    
-    if type(bed) is int:
-        bed = timescale.index(bed)
-    elif type(bed) is float:
-        bed = timescale.index(round(bed))
-    elif type(bed) is str:
-        filterBed = re.search('[0-9]+', bed).group()
-        numBed = int(filterBed)
-        bed = timescale.index(numBed)
-    
-	#the first time block
-	#calculate the hours from start to bed
+    #the first time block
+    #calculate the hours from start to bed
     time1 = bed - sta
     earn1 = time1 * 12
     print("hours:",time1,"earned:",earn1)
     
-	#the second time block
-	#calculate the hours from bed to midnight or end of hours worked
+    #the second time block
+    #calculate the hours from bed to midnight or end of hours worked
     #index 7 is midnight on the timescale
     if sto >=7:
         time2 = 7 - bed
@@ -60,8 +40,8 @@ def calculate(start,stop,bed):
         time2 = sto - bed
         earn2 = time2 * 8
     
-	#the third time block
-	#calculate the hours from midnight to stop time
+    #the third time block
+    #calculate the hours from midnight to stop time
     #if stop time before midnight then return 0
     #index 7 is midnight on the timescale
     if sto >7:
@@ -71,7 +51,7 @@ def calculate(start,stop,bed):
     else:
         earn3 = 0
 	
-	#add up the earnings and return the result
+    #add up the earnings and return the result
     totalHours = sto - sta
     print("total hours:",totalHours)
     
@@ -79,5 +59,27 @@ def calculate(start,stop,bed):
     print("total earnings:",totalEarnings)
     
     return totalEarnings
+
+def help_msg():
+    print("    This program will prompt for 3 inputs (Starting time, Ending time and Bed time).\n    Enter either numbers (e.g. 5, 7.25, 8) or a time form (e.g. 5:00, 7pm, 9:30pm).\n    The program expects a number between 5pm - 4am.\n")
 	
+def validateStart():
+    start = input('Enter Starting time:')
+    #error check the user input for a valid time
+    while int(start) < 5:
+        print("Please enter a Starting time between 5pm and 12am:")
+        start = input('Re-Enter start time:')    
+    return int(start)
+
+def validateStop():
+    stop = input('Enter Stopping time:')
+    return int(stop)
+
+def validateBed():
+    bed = input('Enter Bed time:')
+    while bed < 5:
+        print("If bed time began before arrival, please enter your arrival time.")
+        bed = input('Re-Enter Bed time:')    
+    return int(bed)
+    
 inputs()
