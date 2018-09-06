@@ -77,7 +77,7 @@ def validateStop():
 
 def validateBed():
     bed = input('Enter Bed time:')
-    while bed < 5:
+    while int(bed) < 5:
         print("If bed time began before arrival, please enter your arrival time.")
         bed = input('Re-Enter Bed time:')    
     return int(bed)
