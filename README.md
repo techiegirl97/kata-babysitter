@@ -17,8 +17,11 @@ The babysitter:
 In order to get paid for 1 night of work<br>
 I want to calculate my nightly charge<br>*
 
-##Prerequisites
-You must have Python installed to run this script.
+## Prerequisites
+You must have Python 3.6.4 installed to run this script. If you want to run the unit test, you will need to install PyTest.
+
+To install PyTest run:
+python -m pip install pytest
 
 ## Usage
 The program will prompt the user for 3 parameters.
@@ -32,6 +35,9 @@ To run the script:
 1) open a command prompt
 2) type the following command:
 python <path to script>\calculate.py
+
+To run the unit tests:
+
 
 
 

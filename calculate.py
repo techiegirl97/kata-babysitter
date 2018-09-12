@@ -27,7 +27,7 @@ def calculate(start,stop,bed):
     #calculate the hours from start to bed
     time1 = bed - sta
     earn1 = time1 * 12
-    print("hours:",time1,"earned:",earn1)
+    #print("hours:",time1,"earned:",earn1)
     
     #the second time block
     #calculate the hours from bed to midnight or end of hours worked
@@ -35,7 +35,7 @@ def calculate(start,stop,bed):
     if sto >=7:
         time2 = 7 - bed
         earn2 = time2 * 8
-        print("hours:",time2,"earned:",earn2)
+        #print("hours:",time2,"earned:",earn2)
     else:
         time2 = sto - bed
         earn2 = time2 * 8
@@ -47,7 +47,7 @@ def calculate(start,stop,bed):
     if sto >7:
         time3 = sto - 7
         earn3 = time3 * 16
-        print("hours:",time3,"earned:",earn3)
+        #print("hours:",time3,"earned:",earn3)
     else:
         earn3 = 0
 	
@@ -65,21 +65,31 @@ def help_msg():
 	
 def validateStart():
     start = input('Enter Starting time:')
+        
     #error check the user input for a valid time
     while int(start) < 5:
         print("Please enter a Starting time between 5pm and 12am:")
         start = input('Re-Enter start time:')    
+    #need to ensure the number is a rounded int
+    #ensure that the value returned is an int
     return int(start)
 
 def validateStop():
-    stop = input('Enter Stopping time:')
+    stop = input('Enter Stopping time:')  
+        
+    #validate that stop is after start
+    
+    #ensure that the value returned is an int
     return int(stop)
 
 def validateBed():
     bed = input('Enter Bed time:')
+        
     while int(bed) < 5:
         print("If bed time began before arrival, please enter your arrival time.")
-        bed = input('Re-Enter Bed time:')    
+        bed = input('Re-Enter Bed time:')
+    #ensure that the value returned is an int
     return int(bed)
-    
+
+#comment this line out when running the pytests or you will be prompted for input
 inputs()
