@@ -1,4 +1,4 @@
-import re
+#import re
 import math
 
 def inputs():
@@ -65,31 +65,39 @@ def help_msg():
 	
 def validateStart():
     start = input('Enter Starting time:')
-        
+    parsed = round(float(start))
     #error check the user input for a valid time
-    while int(start) < 5:
+    while parsed < 5:
         print("Please enter a Starting time between 5pm and 12am:")
-        start = input('Re-Enter start time:')    
+        start = input('Re-Enter start time:')
+        parsed = round(float(start))
+        
     #need to ensure the number is a rounded int
+    
     #ensure that the value returned is an int
-    return int(start)
+    return int(parsed)
 
 def validateStop():
     stop = input('Enter Stopping time:')  
-        
+    parsed = round(float(stop))
+    
     #validate that stop is after start
     
     #ensure that the value returned is an int
-    return int(stop)
+    return int(parsed)
 
 def validateBed():
     bed = input('Enter Bed time:')
+    parsed = round(float(bed))
         
-    while int(bed) < 5:
+    while parsed < 5:
         print("If bed time began before arrival, please enter your arrival time.")
         bed = input('Re-Enter Bed time:')
+        parsed = round(float(bed))
+        
     #ensure that the value returned is an int
-    return int(bed)
+    return int(parsed)
 
 #comment this line out when running the pytests or you will be prompted for input
+#Need to update the test script to handle user input prompts.
 inputs()

@@ -32,6 +32,7 @@ Last, enter the Bedtime.
 The algorithm will calculate pay for one night of work.
 
 To run the script:
+
 python \your path to script\calculate.py
 
 ## Unit Tests
@@ -39,6 +40,7 @@ python \your path to script\calculate.py
 You will need to have Pytest installed with your Python to run the tests.
 
 To install Pytest, run:
+
 pip install -U pytest
 
 To run the unit tests:

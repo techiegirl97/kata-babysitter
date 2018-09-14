@@ -4,6 +4,10 @@
 #8 to mid is 4 hours at ($8/hr) = $32
 #mid to 4 is 4 hours at ($16/hr) = $64
 
+#This test script uses the Pytest framework.
+#Need to update the script to handle user input prompts.
+
+#import mock
 import calculate
 
 def test_workday1():
