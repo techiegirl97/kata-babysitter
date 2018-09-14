@@ -21,6 +21,7 @@ I want to calculate my nightly charge<br>*
 You must have Python 3.6.4 installed to run this script. If you want to run the unit test, you will need to install PyTest.
 
 To install PyTest run:
+
 python -m pip install pytest
 
 ## Usage
@@ -31,7 +32,7 @@ Last, enter the Bedtime.
 
 The algorithm will calculate pay for one night of work.
 
-To run the script:
+*To run the script:
 
 python \your path to script\calculate.py
 
@@ -39,11 +40,15 @@ python \your path to script\calculate.py
 
 You will need to have Pytest installed with your Python to run the tests.
 
-To install Pytest, run:
+*To install Pytest, run:
 
 pip install -U pytest
 
-To run the unit tests:
+or
+
+python -m pip install pytest
+
+*To run the unit tests:
 
 python -m pytest
 
