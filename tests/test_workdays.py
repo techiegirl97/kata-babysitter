@@ -43,10 +43,44 @@ def test_workdays6():
     
     assert output == [
         'Enter Starting time:']
+        
+def test_workdays6_1():
+    #testing an invalid start time
+    input_values = ['2','6']
+    output = []
+    
+    def mock_input(s):
+        output.append(s)
+        return input_values.pop(0)
+    calculate.input = mock_input
+    calculate.print = lambda s : output.append(s)
+    
+    calculate.validateStart()
+    
+    assert output == [
+        'Enter Starting time:',
+        'Please enter a Starting time between 5pm and 12am:',
+        'Re-Enter start time:']
 
 def test_workdays7():
     #this test validates the input of a string or float type of input for Stopping time
     input_values = ['9.75']
+    output = []
+    
+    def mock_input(s):
+        output.append(s)
+        return input_values.pop(0)
+    calculate.input = mock_input
+    calculate.print = lambda s : output.append(s)
+    
+    calculate.validateStop()
+    
+    assert output == [
+        'Enter Stopping time:']
+        
+def test_workdays7_1():
+    #this test validates the input of a string or float type of input for Stopping time
+    input_values = ['5.75','3']
     output = []
     
     def mock_input(s):
@@ -77,3 +111,21 @@ def test_workdays8():
     assert output == [
         'Enter Bed time:']
 
+def test_workdays8_1():
+    #this test validates the input of a string or float type of input for Bed time
+    #testing for invalid bed time
+    input_values = ['4','7']
+    output = []
+    
+    def mock_input(s):
+        output.append(s)
+        return input_values.pop(0)
+    calculate.input = mock_input
+    calculate.print = lambda s : output.append(s)
+    
+    calculate.validateBed()
+    
+    assert output == [
+        'Enter Bed time:',
+        'If bed time began before arrival, please enter your arrival time.',
+        'Re-Enter Bed time:']
