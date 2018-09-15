@@ -1,4 +1,3 @@
-#import re
 import math
 
 def inputs():
@@ -99,5 +98,4 @@ def validateBed():
     return int(parsed)
 
 #comment this line out when running the pytests or you will be prompted for input
-#Need to update the test script to handle user input prompts.
 inputs()
