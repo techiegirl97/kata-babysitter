@@ -40,7 +40,7 @@ python \your path to script\calculate.py
 
 You will need to have Pytest installed with your Python to run the tests.
 
-*To install Pytest, run:
+** To install Pytest, run:
 
 pip install -U pytest
 
@@ -48,7 +48,7 @@ or
 
 python -m pip install pytest
 
-*To run the unit tests:
+** To run the unit tests:
 
 python -m pytest
 
