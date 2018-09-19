@@ -1,9 +1,3 @@
-#write the tests
-#order of variables (start time, stop time, bedtime), result is $earnings
-#5 to 8 is 3 hours at ($12/hr) = $36
-#8 to mid is 4 hours at ($8/hr) = $32
-#mid to 4 is 4 hours at ($16/hr) = $64
-
 #This test script uses the Pytest framework.
 
 import calculate
@@ -29,7 +23,6 @@ def test_workdays5():
     assert total == 12
 
 def test_workdays6():
-    #this test validates the input of a string or float type of input for Starting time
     input_values = ['6.25']
     output = []
     
@@ -45,7 +38,6 @@ def test_workdays6():
         'Enter Starting time:']
         
 def test_workdays6_1():
-    #testing an invalid start time
     input_values = ['2','6']
     output = []
     
@@ -63,7 +55,6 @@ def test_workdays6_1():
         'Re-Enter start time:']
 
 def test_workdays7():
-    #this test validates the input of a string or float type of input for Stopping time
     input_values = ['9.75']
     output = []
     
@@ -79,7 +70,6 @@ def test_workdays7():
         'Enter Stopping time:']
         
 def test_workdays7_1():
-    #this test validates the input of a string or float type of input for Stopping time
     input_values = ['5.75','3']
     output = []
     
@@ -92,11 +82,9 @@ def test_workdays7_1():
     calculate.validateStop()
     
     assert output == [
-        'Enter Stopping time:']
-        
+        'Enter Stopping time:']        
         
 def test_workdays8():
-    #this test validates the input of a string or float type of input for Bed time
     input_values = ['8.5']
     output = []
     
@@ -112,8 +100,6 @@ def test_workdays8():
         'Enter Bed time:']
 
 def test_workdays8_1():
-    #this test validates the input of a string or float type of input for Bed time
-    #testing for invalid bed time
     input_values = ['4','7']
     output = []
     
